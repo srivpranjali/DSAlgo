@@ -2,14 +2,21 @@ package driverFactory;
 
 import java.time.Duration;
 
+import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+
+import utilities.LoggerLoad;
 
 public class MyDriverFactory {
 	
-    public static WebDriver driver;
+    //public static WebDriver driver;
+	public static ChromeOptions chrome = new ChromeOptions();
+	public static EdgeOptions edge = new EdgeOptions();
 	
 	public static ThreadLocal<WebDriver>tldriver = new ThreadLocal<>();
 	
@@ -17,16 +24,23 @@ public class MyDriverFactory {
 		System.out.println("browser value is: " +browser);
 		
 		if(browser.equals("chrome")) {
-			tldriver.set(new ChromeDriver());
+			LoggerLoad.info("Testing on Chrome -" +browser);
+			chrome.setPageLoadStrategy(PageLoadStrategy.EAGER);
+			chrome.addArguments("--headless=new");
+			tldriver.set(new ChromeDriver(chrome));
 		}
 		else if (browser.equals("firefox")) {
+			LoggerLoad.info("Testing on Firefox -" +browser);
 			tldriver.set(new FirefoxDriver());
 	    }
 		else if (browser.equals("edge")) {
-			tldriver.set(new EdgeDriver());
+			LoggerLoad.info("Testing on Edge -" +browser);
+			edge.setPageLoadStrategy(PageLoadStrategy.EAGER);
+			edge.addArguments("--headless=new");
+			tldriver.set(new EdgeDriver(edge));
 	    }
 		else {
-			System.out.println("Please pass the correct browser value: " +browser);
+			LoggerLoad.error("Please pass the correct browser value" +browser);
 		}
 		
 		getDriver().manage().deleteAllCookies();

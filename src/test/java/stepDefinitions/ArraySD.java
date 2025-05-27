@@ -13,6 +13,7 @@ import org.openqa.selenium.WebDriver;
 import driverFactory.MyDriverFactory;
 import pageObjects.ArrayPage;
 import utilities.ConfigReader;
+import utilities.LoggerLoad;
 
 public class ArraySD {
 	
@@ -20,10 +21,11 @@ public class ArraySD {
 	private WebDriver driver = MyDriverFactory.getDriver();
 	private ArrayPage arrayPage = new ArrayPage(driver);
 	
-
+/*
 	@Given("User is on Login Page of portal")
 	public void user_is_on_login_page_of_portal() {
 		driver.get(reader.getProperty("login_URL"));
+		LoggerLoad.info("User is on Login Page of DSAlgo portal");
 		
 	}
 
@@ -33,37 +35,35 @@ public class ArraySD {
 		String uname = reader.getProperty("username");
 		String passwd = reader.getProperty("password");
 		arrayPage.login(uname, passwd);
-			
-	}
-
-	@Then("User is redirected to Home Page")
-	public void user_is_redirected_to_home_page() {
-		driver.get(reader.getProperty("appHome_URL"));
-
+					
 	}
 
 	@Given("User is logged in to Home Page")
 	public void user_is_logged_in_to_home_page() {
+		driver.get(reader.getProperty("appHome_URL"));
+		LoggerLoad.info("User is redirected to Home Page of DSAlgo portal");
 
 	}
-
+*/
 	@When("User clicks Get Started button under Array")
 	public void user_clicks_get_started_button_under_array() {
 		arrayPage.click_getStarted_Arrays();
+		LoggerLoad.info("User clicked Get Started button for Array Page");
 
 	}
-
+/*
 	@Then("User should be redirected to the {string} page")
 	public void user_should_be_redirected_to_the_page(String expectedArrayPage) {
 		assertEquals(expectedArrayPage, arrayPage.arrayTitle(), "Array Page Title verification failed : " );
 	}
-	
+*/	
 	@Given("User is on the Array page")
 	public void user_is_on_the_array_page() {
 	    arrayPage.get_userOnArrayPage();
+	    LoggerLoad.info("User is on Array Page");
 	    
 	}
-
+/*
 	@When("User clicks link from the list of topics covered {string}")
 	public void user_clicks_link_from_the_list_of_topics_covered(String string) {
 	    arrayPage.click_ArrayOptions(string);
@@ -109,13 +109,13 @@ public class ArraySD {
 		// code for checking if the run button is displayed
 	    
 	}
-
+*/
 	@Given("User is on the tryEditor page of Array with Run button")
 	public void user_is_on_the_try_editor_page_of_array_with_run_button() {
 	    MyDriverFactory.getDriver().get(reader.getProperty("tryEditorUrl"));
 	    
 	}
-
+/*
 	@When("User writes the valid code in editor from {string} and {int} and click Run button")
 	public void user_writes_the_valid_code_in_editor_from_and_and_click_run_button(String sheetname, Integer rownumber) throws InvalidFormatException, IOException {
 	    arrayPage.enterCodePython(sheetname, rownumber);
@@ -141,7 +141,7 @@ public class ArraySD {
 		driver.switchTo().alert().accept();
 	    
 	}
-	
+*/	
 	@Given("User is on the Applications of Array page")
 	public void user_is_on_the_applications_of_array_page() {
 		driver.get(reader.getProperty("Applications_Of_Array_URL"));

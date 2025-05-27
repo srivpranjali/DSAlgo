@@ -70,8 +70,9 @@ public class ArrayPage {
 		return driver.getTitle();
 	}
 	
-	public String getCurrentURL() {
-		return driver.getCurrentUrl();
+	public String getOptionsTitle() {
+		return driver.getTitle();
+		
 	}
 	
 	
