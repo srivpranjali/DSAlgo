@@ -7,9 +7,8 @@ import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-		features = {"src/test/resources/Features/linkedlist.feature"},
+		features = {"src/test/resources/Features/"},
 		glue = {"stepDefinitions", "hooks"},
-		
 		plugin = {"pretty","html:target/cucumber.html","io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
 		         "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
 		        }
