@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -22,6 +23,7 @@ public class LoginPage {
 	private WebDriver driver;
 	private ConfigReader reader = new ConfigReader();
 	private Utils utils = new Utils();
+	
 	
 	
 	@FindBy (xpath = "//input[@id = 'id_username']") WebElement Username;
@@ -62,18 +64,36 @@ public class LoginPage {
 	}
 	
 	public String homeTitle() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.titleIs("NumpyNinja"));
 		return driver.getTitle();
 	}
 	
 	public String loginTitle() {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.titleIs("Login"));
 		return driver.getTitle();
 	}
 	
 	public String getMessage() {
-		//WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        //wait.until(ExpectedConditions.alertIsPresent());
-		//Alert alert = driver.switchTo().alert();
 		return AlertElement.getText();
 	}
+	
+	public String getMessageForUsername() {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		String message = (String) js.executeScript(
+	            "return arguments[0].validationMessage;", Username
+	        );
+		return message;
+	}
+	
+	public String getMessageForPassword() {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		String message = (String) js.executeScript(
+	            "return arguments[0].validationMessage;", Password
+	        );
+		return message;
+	}
 
-}
+	}
+

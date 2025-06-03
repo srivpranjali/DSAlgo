@@ -1,5 +1,5 @@
 @LinkedList
-Feature: Linked List
+Feature: LinkedList
 
   Background: Steps for each scenario
     Given User is on Login Page of portal
@@ -44,129 +44,129 @@ Feature: Linked List
   
   @LinkedList_Test04
   Scenario Outline: Verify the tryEditor functionality is working in "Introduction"
-  Given User is on the tryEditor page of Linked List with Run button
+  Given User is on the tryEditor page of "Introduction" with Run button
   When User writes the valid code in editor from "<Sheet>" and <RowNumber> and click Run button
   Then User should be able to see correct output in the console
   Examples:
   |Sheet|          RowNumber|
-  |dsalgocode|       1|
+  |dsalgocode|       0|
   
   @LinkedList_Test05
   Scenario Outline: Verify the tryEditor functionality is working in "Creating Linked LIst"
-  Given User is on the tryEditor page of Linked List with Run button
+  Given User is on the tryEditor page of "Creating Linked LIst" with Run button
   When User writes the valid code in editor from "<Sheet>" and <RowNumber> and click Run button
   Then User should be able to see correct output in the console
   Examples:
   |Sheet|          RowNumber|
-  |dsalgocode|       1|
+  |dsalgocode|       0|
   
   @LinkedList_Test06
   Scenario Outline: Verify the tryEditor functionality is working in "Types of Linked List"
-  Given User is on the tryEditor page of Linked List with Run button
+  Given User is on the tryEditor page of "Types of Linked List" with Run button
   When User writes the valid code in editor from "<Sheet>" and <RowNumber> and click Run button
   Then User should be able to see correct output in the console
   Examples:
   |Sheet|          RowNumber|
-  |dsalgocode|       1|
+  |dsalgocode|       0|
   
   @LinkedList_Test07
   Scenario Outline: Verify the tryEditor functionality is working in "Implement Linked List in Python"
-  Given User is on the tryEditor page of Linked List with Run button
+  Given User is on the tryEditor page of "Implement Linked List in Python" with Run button
   When User writes the valid code in editor from "<Sheet>" and <RowNumber> and click Run button
   Then User should be able to see correct output in the console
   Examples:
   |Sheet|          RowNumber|
-  |dsalgocode|       1|
+  |dsalgocode|       0|
 
   @LinkedList_Test08
   Scenario Outline: Verify the tryEditor functionality is working in "Traversal"
-  Given User is on the tryEditor page of Linked List with Run button
+  Given User is on the tryEditor page of "Traversal" with Run button
   When User writes the valid code in editor from "<Sheet>" and <RowNumber> and click Run button
   Then User should be able to see correct output in the console
   Examples:
   |Sheet|          RowNumber|
-  |dsalgocode|       1|
+  |dsalgocode|       0|
 
   @LinkedList_Test09
   Scenario Outline: Verify the tryEditor functionality is working in "Insertion"
-  Given User is on the tryEditor page of Linked List with Run button
+  Given User is on the tryEditor page of "Insertion" with Run button
   When User writes the valid code in editor from "<Sheet>" and <RowNumber> and click Run button
   Then User should be able to see correct output in the console
   Examples:
   |Sheet|          RowNumber|
-  |dsalgocode|       1|
+  |dsalgocode|       0|
 
   @LinkedList_Test10
   Scenario Outline: Verify the tryEditor functionality is working in "Deletion"
-  Given User is on the tryEditor page of Linked List with Run button
+  Given User is on the tryEditor page of "Deletion" with Run button
   When User writes the valid code in editor from "<Sheet>" and <RowNumber> and click Run button
   Then User should be able to see correct output in the console
   Examples:
   |Sheet|          RowNumber|
-  |dsalgocode|       1|
+  |dsalgocode|       0|
 
   
   @LinkedList_Test11
   Scenario Outline: Verify the tryEditor functionality is working in "Introduction" in negative test
-  Given User is on the tryEditor page of Linked List with Run button
+  Given User is on the tryEditor page of "Introduction" with Run button
   When User writes the invalid code in editor from "<Sheet>" and <RowNumber> and click Run button
   Then User should be able to see error message in alert window
   Examples:
   |Sheet|          RowNumber|
-  |dsalgocode|       0|
+  |dsalgocode|       1|
   
   @LinkedList_Test12
   Scenario Outline: Verify the tryEditor functionality is working in "Creating Linked LIst" in negative test
-  Given User is on the tryEditor page of Linked List with Run button
+  Given User is on the tryEditor page of "Creating Linked LIst" with Run button
   When User writes the invalid code in editor from "<Sheet>" and <RowNumber> and click Run button
   Then User should be able to see error message in alert window
   Examples:
   |Sheet|          RowNumber|
-  |dsalgocode|       0|
+  |dsalgocode|       1|
   
   @LinkedList_Test13
   Scenario Outline: Verify the tryEditor functionality is working in "Types of Linked List" in negative test
-  Given User is on the tryEditor page of Linked List with Run button
+  Given User is on the tryEditor page of "Types of Linked List" with Run button
   When User writes the invalid code in editor from "<Sheet>" and <RowNumber> and click Run button
   Then User should be able to see error message in alert window
   Examples:
   |Sheet|          RowNumber|
-  |dsalgocode|       0|
+  |dsalgocode|       1|
   
   @LinkedList_Test14
   Scenario Outline: Verify the tryEditor functionality is working in "Implement Linked List in Python" in negative test
-  Given User is on the tryEditor page of Linked List with Run button
+  Given User is on the tryEditor page of "Implement Linked List in Python" with Run button
   When User writes the invalid code in editor from "<Sheet>" and <RowNumber> and click Run button
   Then User should be able to see error message in alert window
   Examples:
   |Sheet|          RowNumber|
-  |dsalgocode|       0|
+  |dsalgocode|       1|
 
   @LinkedList_Test15
   Scenario Outline: Verify the tryEditor functionality is working in "Traversal" in negative test
-  Given User is on the tryEditor page of Linked List with Run button
+  Given User is on the tryEditor page of "Traversal" with Run button
   When User writes the invalid code in editor from "<Sheet>" and <RowNumber> and click Run button
   Then User should be able to see error message in alert window
   Examples:
   |Sheet|          RowNumber|
-  |dsalgocode|       0|
+  |dsalgocode|       1|
 
   @LinkedList_Test16
   Scenario Outline: Verify the tryEditor functionality is working in "Insertion" in negative test
-  Given User is on the tryEditor page of Linked List with Run button
+  Given User is on the tryEditor page of "Insertion" with Run button
   When User writes the invalid code in editor from "<Sheet>" and <RowNumber> and click Run button
   Then User should be able to see error message in alert window
   Examples:
   |Sheet|          RowNumber|
-  |dsalgocode|       0|
+  |dsalgocode|       1|
 
   @LinkedList_Test17
   Scenario Outline: Verify the tryEditor functionality is working in "Deletion" in negative test
-  Given User is on the tryEditor page of Linked List with Run button
+  Given User is on the tryEditor page of "Deletion" with Run button
   When User writes the invalid code in editor from "<Sheet>" and <RowNumber> and click Run button
   Then User should be able to see error message in alert window
   Examples:
   |Sheet|          RowNumber|
-  |dsalgocode|       0|
+  |dsalgocode|       1|
 
  

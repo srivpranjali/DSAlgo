@@ -48,6 +48,7 @@ public class ArrayPage {
 		PageFactory.initElements(driver,this);
 	}
 	
+	
 
 	public void get_userOnArrayPage() {
 		driver.get(reader.getProperty("Arrays_URL"));
@@ -55,15 +56,6 @@ public class ArrayPage {
 	
 	public void click_getStarted_Arrays() {
 		getStarted_Arrays.click();
-	}
-	
-	public String arrayTitle() {
-		return driver.getTitle();
-	}
-	
-	public String getOptionsTitle() {
-		return driver.getTitle();
-		
 	}
 	
 	
@@ -123,7 +115,7 @@ public class ArrayPage {
 		return question_Output.getText();
 	}
 	public String getResult() {
-		utils.waitForElement(question_Output);
+		utils.waitForElementVisible(question_Output);
 		return question_Output.getText();
 	}
 	

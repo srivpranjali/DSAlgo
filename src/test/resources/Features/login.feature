@@ -15,7 +15,7 @@ Feature: Login
   Scenario: User login with invalid username and password
     Given User is on DSAlgo login page
     When User enters invalid username, password and clicks Login button
-    Then Verify the message "Invalid username and password"
+    Then Verify the message "Invalid Username and Password"
     
     
   @Login_Test03
