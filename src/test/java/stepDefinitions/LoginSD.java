@@ -76,7 +76,7 @@ public class LoginSD {
 
 	@Then("Verify the message {string} appears for username")
 	public void verify_the_message_appears_for_username(String message) {
-	    assertEquals(message, loginPage.getMessage(), "Message verification failed : ");
+	    assertEquals(message, loginPage.getMessageForUsername(), "Message verification failed : ");
 	}
 
 	@When("User enters username and clicks Login button")
@@ -87,7 +87,7 @@ public class LoginSD {
 
 	@Then("Verify the message {string} appears for password")
 	public void verify_the_message_appears_for_password(String message) {
-		assertEquals(message, loginPage.getMessage(), "Message verification failed : ");
+		assertEquals(message, loginPage.getMessageForPassword(), "Message verification failed : ");
 	}
 
 	@When("User enters password and clicks Login button")

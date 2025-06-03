@@ -38,75 +38,75 @@ Feature: Array
   
   @Array_Test04
   Scenario Outline: Verify the tryEditor functionality is working in "Arrays in Python"
-  Given User is on the tryEditor page of Array with Run button
+  Given User is on the tryEditor page of "Arrays in Python" with Run button
   When User writes the valid code in editor from "<Sheet>" and <RowNumber> and click Run button
   Then User should be able to see correct output in the console
   Examples:
   |Sheet|          RowNumber|
-  |dsalgocode|       1|
+  |dsalgocode|       0|
   
   @Array_Test05
   Scenario Outline: Verify the tryEditor functionality is working in "Arrays Using List"
-  Given User is on the tryEditor page of Array with Run button
+  Given User is on the tryEditor page of "Arrays Using List" with Run button
   When User writes the valid code in editor from "<Sheet>" and <RowNumber> and click Run button
   Then User should be able to see correct output in the console
   Examples:
   |Sheet|          RowNumber|
-  |dsalgocode|       1|
+  |dsalgocode|       0|
   
   @Array_Test06
   Scenario Outline: Verify the tryEditor functionality is working in "Basic Operations in List"
-  Given User is on the tryEditor page of Array with Run button
+  Given User is on the tryEditor page of "Basic Operations in List" with Run button
   When User writes the valid code in editor from "<Sheet>" and <RowNumber> and click Run button
   Then User should be able to see correct output in the console
   Examples:
   |Sheet|          RowNumber|
-  |dsalgocode|       1|
+  |dsalgocode|       0|
   
   @Array_Test07
   Scenario Outline: Verify the tryEditor functionality is working in "Applications of Array"
-  Given User is on the tryEditor page of Array with Run button
+  Given User is on the tryEditor page of "Applications of Array" with Run button
   When User writes the valid code in editor from "<Sheet>" and <RowNumber> and click Run button
   Then User should be able to see correct output in the console
   Examples:
   |Sheet|          RowNumber|
-  |dsalgocode|       1|
+  |dsalgocode|       0|
   
   @Array_Test08
   Scenario Outline: Verify the tryEditor functionality is working in "Arrays in Python" in negative test
-  Given User is on the tryEditor page of Array with Run button
+  Given User is on the tryEditor page of "Arrays in Python" with Run button
   When User writes the invalid code in editor from "<Sheet>" and <RowNumber> and click Run button
   Then User should be able to see error message in alert window
   Examples:
   |Sheet|          RowNumber|
-  |dsalgocode|       0|
+  |dsalgocode|       1|
   
   @Array_Test09
   Scenario Outline: Verify the tryEditor functionality is working in "Arrays Using List" in negative test
-  Given User is on the tryEditor page of Array with Run button
+  Given User is on the tryEditor page of "Arrays Using List" with Run button
   When User writes the invalid code in editor from "<Sheet>" and <RowNumber> and click Run button
   Then User should be able to see error message in alert window
   Examples:
   |Sheet|          RowNumber|
-  |dsalgocode|       0|
+  |dsalgocode|       1|
   
   @Array_Test09
   Scenario Outline: Verify the tryEditor functionality is working in "Basic Operations in Lists" in negative test
-  Given User is on the tryEditor page of Array with Run button
+  Given User is on the tryEditor page of "Basic Operations in Lists" with Run button
   When User writes the invalid code in editor from "<Sheet>" and <RowNumber> and click Run button
   Then User should be able to see error message in alert window
   Examples:
   |Sheet|          RowNumber|
-  |dsalgocode|       0|
+  |dsalgocode|       1|
   
   @Array_Test10
   Scenario Outline: Verify the tryEditor functionality is working in "Applications of Array" in negative test
-  Given User is on the tryEditor page of Array with Run button
+  Given User is on the tryEditor page of "Applications of Array" with Run button
   When User writes the invalid code in editor from "<Sheet>" and <RowNumber> and click Run button
   Then User should be able to see error message in alert window
   Examples:
   |Sheet|          RowNumber|
-  |dsalgocode|       0|
+  |dsalgocode|       1|
   
   @Array_Test11
   Scenario Outline: User is able to navigate to question page of <Questions>
@@ -136,7 +136,7 @@ Feature: Array
   Then User should be able to see correct output in the practice console                                                              
   Examples: 
   | Sheet|         RowNumber |
-  | dsalgocode|      3   |
+  | dsalgocode|      4   |
   
   @Array_Test14
   Scenario Outline: Verify the tryEditor functionality is working in "Find Numbers with Even Number of Digits" practice editor page
@@ -145,7 +145,7 @@ Feature: Array
   Then User should be able to see correct output in the practice console                                                              
   Examples: 
   | Sheet|         RowNumber |
-  | dsalgocode|      4   |
+  | dsalgocode|      6   |
   
   @Array_Test15
   Scenario Outline: Verify the tryEditor functionality is working in "Squares of  a Sorted Array" practice editor page
@@ -154,7 +154,7 @@ Feature: Array
   Then User should be able to see correct output in the practice console                                                              
   Examples: 
   | Sheet|         RowNumber |
-  | dsalgocode|      5   |
+  | dsalgocode|      8   |
   
   @Array_Test16
   Scenario Outline: Verify the tryEditor functionality is working in "Search the Array" practice editor page when submit button is clicked
@@ -163,7 +163,7 @@ Feature: Array
   Then User should be able to see correct output on submission                                                             
   Examples: 
   | Sheet|         RowNumber |
-  | dsalgocode|      2   |
+  | dsalgocode|      3   |
   
   @Array_Test17
   Scenario Outline: Verify the tryEditor functionality is working in "Max Consecutive Ones" practice editor page when submit button is clicked
@@ -172,7 +172,7 @@ Feature: Array
   Then User should be able to see correct output on submission                                                             
   Examples: 
   | Sheet|         RowNumber |
-  | dsalgocode|      3   |
+  | dsalgocode|      5   |
   
   @Array_Test18
   Scenario Outline: Verify the tryEditor functionality is working in "Find Numbers with Even Number of Digits" practice editor page when submit button is clicked
@@ -181,7 +181,7 @@ Feature: Array
   Then User should be able to see correct output on submission                                                             
   Examples: 
   | Sheet|         RowNumber |
-  | dsalgocode|      4   |
+  | dsalgocode|      7   |
   
   @Array_Test19
   Scenario Outline: Verify the tryEditor functionality is working in "Squares of  a Sorted Array" practice editor page when submit button is clicked
@@ -190,7 +190,7 @@ Feature: Array
   Then User should be able to see correct output on submission                                                             
   Examples: 
   | Sheet|         RowNumber |
-  | dsalgocode|      5   |
+  | dsalgocode|      9   |
   
   @Array_Test20
   Scenario Outline: Verify the tryEditor functionality is working in "Search the Array" practice editor page in negative test
@@ -199,7 +199,7 @@ Feature: Array
   Then User should be able to see error message in alert window                                                              
   Examples: 
   | Sheet|         RowNumber |
-  | dsalgocode|      0   |
+  | dsalgocode|      1   |
   
   @Array_Test21
   Scenario Outline: Verify the tryEditor functionality is working in "Max Consecutive Ones" practice editor page in negative test
@@ -208,7 +208,7 @@ Feature: Array
   Then User should be able to see error message in alert window                                                              
   Examples: 
   | Sheet|         RowNumber |
-  | dsalgocode|      0   |
+  | dsalgocode|      1   |
   
   @Array_Test22
   Scenario Outline: Verify the tryEditor functionality is working in "Find Numbers with Even Number of Digits" practice editor page in negative test
@@ -217,7 +217,7 @@ Feature: Array
   Then User should be able to see error message in alert window                                                              
   Examples: 
   | Sheet|         RowNumber |
-  | dsalgocode|      0   |
+  | dsalgocode|      1   |
   
   @Array_Test23
   Scenario Outline: Verify the tryEditor functionality is working in "Squares of  a Sorted Array" practice editor page in negative test
@@ -226,5 +226,5 @@ Feature: Array
   Then User should be able to see error message in alert window                                                              
   Examples: 
   | Sheet|         RowNumber |
-  | dsalgocode|      0   |
+  | dsalgocode|      1   |
   

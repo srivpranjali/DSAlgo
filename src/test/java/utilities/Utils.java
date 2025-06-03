@@ -14,6 +14,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import driverFactory.MyDriverFactory;
+import utilities.LoggerLoad;
 
 public class Utils {
 	
@@ -21,12 +22,21 @@ public class Utils {
 	private XlsReader reader = new XlsReader();
 	private ConfigReader configObj = new ConfigReader();
 	String xlsPath = configObj.getProperty("xlsFilePath");
+		
 	
-	
-	public void waitForElement(WebElement element) {
+	public void waitForElementVisible(WebElement element) {
 		new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(element));
 
 	}
+	
+	public void waitForElementClickable(WebElement element) {
+		new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.elementToBeClickable(element));
+    }
+	
+	public void waitForTitleContains(String title) {
+		new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.titleContains(title));
+	}
+	
 	
 	public String getCodefromXls(String sheetname, int rownumber) throws InvalidFormatException, IOException {
 		List<Map<String, String>> testdata = reader.getData(xlsPath, sheetname);

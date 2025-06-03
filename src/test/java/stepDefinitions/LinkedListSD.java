@@ -18,21 +18,20 @@ public class LinkedListSD {
 	
 	private ConfigReader reader = new ConfigReader();
 	private WebDriver driver = MyDriverFactory.getDriver();
-	private LinkedListPage llpage = new LinkedListPage(driver);
+	private LinkedListPage llPage = new LinkedListPage(driver);
 
 	@When("User clicks Get Started button under Linked List")
 	public void user_clicks_get_started_button_under_linked_list() {
+		llPage.click_getStarted_LinkedList();
 	    
 	}
 
 	@Given("User is on the Linked List page")
 	public void user_is_on_the_linked_list_page() {
+		llPage.get_userOnLLPage();
 	    
 	}
 
-	@Given("User is on the tryEditor page of Linked List with Run button")
-	public void user_is_on_the_try_editor_page_of_linked_list_with_run_button() {
-	    
-	}
+	
 
 }

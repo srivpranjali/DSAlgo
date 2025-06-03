@@ -26,8 +26,8 @@ public class LinkedListPage {
 	@FindBy (xpath ="//a[@href ='types-of-linked-list']") WebElement types_of_linked_list;
 	@FindBy (xpath ="//a[@href ='implement-linked-list-in-python']") WebElement implement_linked_list_in_python;
 	@FindBy (xpath ="//a[@href ='traversal']") WebElement traversal;
-	@FindBy (xpath ="//a[@href ='insertion']") WebElement insertion;
-	@FindBy (xpath ="//a[@href ='deletion']") WebElement deletion;
+	@FindBy (xpath ="//a[@href ='insertion-in-linked-list']") WebElement insertion;
+	@FindBy (xpath ="//a[@href ='deletion-in-linked-list']") WebElement deletion;
 	@FindBy (xpath ="//a[@href='/tryEditor']") WebElement try_here;
 	@FindBy (xpath = "//div[@class = 'CodeMirror-scroll']") WebElement codeEditor;
 	@FindBy (id = "output")WebElement codeOutput;
@@ -37,12 +37,13 @@ public class LinkedListPage {
 		PageFactory.initElements(driver,this);
 	}
 	
-	public String llTitle() {
-		return driver.getTitle();
+	public void click_getStarted_LinkedList() {
+		getStarted_LinkedList.click();
 	}
 	
-	public String getOptionsTitle() {
-		return driver.getTitle();
+	public void get_userOnLLPage() {
+		driver.navigate().to(ConfigReader.getProperty("Linkedlist_URL"));
+		//driver.get(ConfigReader.getProperty("Linkedlist_URL"));
 	}
 	
 	public void click_LinkedListOptions(String linkedListOptions) {
@@ -67,6 +68,7 @@ public class LinkedListPage {
 		}
 	
 	public void click_TryHere() {
+		utils.waitForElementClickable(try_here);
 		try_here.click();
 	}
 	}
