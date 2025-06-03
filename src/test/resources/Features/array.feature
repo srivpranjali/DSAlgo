@@ -4,7 +4,7 @@ Feature: Array
   Background: Steps for each scenario
     Given User is on Login Page of portal
     When User enter valid username and password
-    Then User is redirected to Home Page
+    
 
   @Array_Test01
   Scenario: User is able to navigate to "Array" page
@@ -16,13 +16,13 @@ Feature: Array
   Scenario Outline: User is able to navigate to page <Options>
   Given User is on the Array page
   When User clicks link from the list of topics covered "<Options>"
-  Then User should be redirected to respective page of "<destinationUrl>"
+  Then User should be redirected to respective page of "<destinationTitle>"
   Examples:
-  |Options|                    destinationUrl|
-  |Arrays in Python|           https://dsportalapp.herokuapp.com/array/arrays-in-python/|
-  |Arrays using List|          https://dsportalapp.herokuapp.com/array/arrays-using-list/|
-  |Basic Operations in Lists|  https://dsportalapp.herokuapp.com/array/basic-operations-in-lists/|
-  |Applications of Array|      https://dsportalapp.herokuapp.com/array/applications-of-array/|
+  |Options|                    destinationTitle|
+  |Arrays in Python|           Arrays in Python|
+  |Arrays using List|          Arrays using List|
+  |Basic Operations in Lists|  Basic Operations in Lists|
+  |Applications of Array|      Applications of Array|
   
   @Array_Test03
   Scenario Outline: User is able to navigate to TryEditor page of <Options> to verify code in python

@@ -22,9 +22,7 @@ public class ArrayPage {
 
 	
 	// Locators
-	@FindBy (xpath = "//input[@id = 'id_username']") WebElement Username;
-	@FindBy (xpath = "//input[@id = 'id_password']") WebElement Password;
-	@FindBy (xpath = "//input[@value = 'Login']") WebElement Login;
+
 	
 	@FindBy (xpath = "//a[@href='array']") WebElement getStarted_Arrays;
 	@FindBy (xpath = "//a[@href ='arrays-in-python']") WebElement arrays_in_python;
@@ -32,8 +30,7 @@ public class ArrayPage {
 	@FindBy (xpath ="//a[@href ='basic-operations-in-lists']") WebElement basic_operations_in_lists;
 	@FindBy (xpath ="//a[@href ='applications-of-array']") WebElement applications_of_array;
 	@FindBy (xpath ="//a[@href='/tryEditor']") WebElement try_here;
-	@FindBy (xpath = "//div[@class = 'CodeMirror-scroll']") WebElement codeEditor;
-	@FindBy (id = "output")WebElement codeOutput;
+
 	
 	@FindBy (xpath = "//a[@href = '/array/practice']") WebElement practice_Questions;
 	@FindBy (xpath = "//a[@href = '/question/1']") WebElement question1;
@@ -51,13 +48,7 @@ public class ArrayPage {
 		PageFactory.initElements(driver,this);
 	}
 	
-	public void login(String username, String password) {
-		Username.sendKeys(username);
-		Password.sendKeys(password);
-		
-		Login.click();
-	}
-	
+
 	public void get_userOnArrayPage() {
 		driver.get(reader.getProperty("Arrays_URL"));
 	}
@@ -70,8 +61,9 @@ public class ArrayPage {
 		return driver.getTitle();
 	}
 	
-	public String getCurrentURL() {
-		return driver.getCurrentUrl();
+	public String getOptionsTitle() {
+		return driver.getTitle();
+		
 	}
 	
 	
@@ -119,16 +111,12 @@ public class ArrayPage {
 		return driver.getTitle();
 	}
 	
-	public void click_Run() {
-		run_button.click();
-	}
-	
 	public void click_Submit() {
 		submit_button.click();
 	}
 	
-	public String getEditorOutput() {
-		return codeOutput.getText();
+	public void click_Run() {
+		run_button.click();
 	}
 	
 	public String getQuestionOutput() {
@@ -139,20 +127,7 @@ public class ArrayPage {
 		return question_Output.getText();
 	}
 	
-	public void enterCodePython(String sheetname, int rownumber) throws InvalidFormatException, IOException  {
-		
-		String code = utils.getCodefromXls(sheetname, rownumber);
-		this.enterCode(code, codeEditor);
-	}
-	
-	public void enterCode(String code, WebElement element) {
-         new Actions(driver).sendKeys(element, code).perform();
-	}
-	
-	public String getCodeOutput(String sheetname, int rownumber) throws InvalidFormatException, IOException  {
-		String result = utils.getOutputFromXls(sheetname, rownumber);
-		return result;
-	}	
+
 	
 	public void enterCodePractice(String sheetname, int rownumber) throws InvalidFormatException, IOException, InterruptedException {
 		String code = utils.getCodefromXls(sheetname, rownumber);

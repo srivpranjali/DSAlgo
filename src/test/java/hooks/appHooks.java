@@ -11,6 +11,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import driverFactory.MyDriverFactory;
 import utilities.ConfigReader;
+import utilities.LoggerLoad;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
@@ -21,6 +22,8 @@ public class appHooks {
 		
 	@Before
 	public void setup() throws Throwable {
+		LoggerLoad.info("Execution Started");
+		LoggerLoad.info("Loading the Property File");
 		String browser = ConfigReader.getBrowserType();
 		MyDriverFactory.initializeBrowser(browser);
 
@@ -38,7 +41,8 @@ public class appHooks {
 		String scenarioName = scenario.getName().replaceAll(" ", "_");
 
 		if (scenario.isFailed()) {
-			System.out.println("Scenario is Failed and taking Screenshot");
+			LoggerLoad.debug("Scenario is failed and taking Screentshot");
+			//System.out.println("Scenario is Failed and taking Screenshot");
 
 			byte[] screenShot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
 			scenario.attach(screenShot, "image/png", scenarioName);
