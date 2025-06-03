@@ -19,10 +19,8 @@ public class Utils {
 	
 	WebDriver driver = MyDriverFactory.getDriver();
 	private XlsReader reader = new XlsReader();
-	private ConfigReader configObj = new ConfigReader();
-	String xlsPath = configObj.getProperty("xlsFilePath");
-	
-	
+	String xlsPath = ConfigReader.getProperty("xlsFilePath");
+
 	public void waitForElement(WebElement element) {
 		new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(element));
 
