@@ -21,10 +21,13 @@ public class appHooks {
 	public static WebDriver driver;
 		
 	@Before
-	public void setup() throws Throwable {
+	public void setup(Scenario scenario) throws Throwable {
 		LoggerLoad.info("Execution Started");
-		LoggerLoad.info("Loading the Property File");
-		String browser = ConfigReader.getBrowserType();
+				
+		String browser = System.getProperty("browser");
+		System.setProperty("extent.reporter.spark.out", "ExtendReports/" + browser + "/Spark.html");
+	    System.setProperty("allure.results.directory", "allure-results/" + browser);
+		
 		MyDriverFactory.initializeBrowser(browser);
 
 		driver = MyDriverFactory.getDriver();

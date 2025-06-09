@@ -1,8 +1,10 @@
 package utilities;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,48 +14,84 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
 
 public class XlsReader {
 	
-	public static int totalRows;
+	private Workbook workbook;
 
-	public List<Map<String, String>> getData(String xlsFilePath, String sheetname) 
-	throws IOException {
-		Workbook workbook = WorkbookFactory.create(new File(xlsFilePath));
-		Sheet sheet = workbook.getSheet(sheetname);
-		workbook.close();
-		return readSheet(sheet);
-	}
-	
-	private List<Map<String, String>> readSheet(Sheet sheet) {
-		Row row;
-		Cell cell;
-		totalRows = sheet.getLastRowNum();
-
-		List<Map<String, String>> xlsRows = new ArrayList<Map<String, String>>();
-
-		for (int currentRow = 1; currentRow <= totalRows; currentRow++) {
-			row = sheet.getRow(currentRow);
-
-			int totalColumns = row.getLastCellNum();
-
-			LinkedHashMap<String, String> columnData = new LinkedHashMap<String, String>();
-			
-			for (int currentColumn = 0; currentColumn < totalColumns; currentColumn++) {
-				cell = row.getCell(currentColumn);
-
-				String columnName = sheet.getRow(sheet.getFirstRowNum()).getCell(currentColumn)
-						.getStringCellValue();
-				columnData.put(columnName, cell.getStringCellValue());
-			}
-			xlsRows.add(columnData);
-		}
+	public XlsReader(String filePath){
+        try (FileInputStream fis = new FileInputStream(filePath)) {
+            workbook = new XSSFWorkbook(fis);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
 		
-		return xlsRows;
-	}
+    }
+    
+		
+	public Map<String, String> getPythonCodeAndOutput(String sheetName, String testName) {
+        Map<String, String> result = new HashMap<>();
+        Sheet sheet = workbook.getSheet(sheetName);
 
-	public int countRows() {
-		return totalRows;
-	}
+        if (sheet == null) {
+            System.out.println("Sheet not found.");
+            return result;
+        }
 
+        // Get header row
+        Row headerRow = sheet.getRow(0);
+        int testNameCol = -1, pythonCodeCol = -1, outputCol = -1;
+
+        // Map column headers to indices
+        for (Cell cell : headerRow) {
+            String header = cell.getStringCellValue().trim();
+            if (header.equalsIgnoreCase("TestName")) testNameCol = cell.getColumnIndex();
+            if (header.equalsIgnoreCase("pythonCode")) pythonCodeCol = cell.getColumnIndex();
+            if (header.equalsIgnoreCase("output")) outputCol = cell.getColumnIndex();
+        }
+
+        // Validate column indices
+        if (testNameCol == -1 || pythonCodeCol == -1 || outputCol == -1) {
+            System.out.println("One or more required columns are missing.");
+            return result;
+        }
+
+        // Search for the row with matching testName
+        for (Row row : sheet) {
+            if (row.getRowNum() == 0) continue; // skip header
+
+            Cell testNameCell = row.getCell(testNameCol);
+            if (testNameCell != null && testNameCell.getStringCellValue().trim().equalsIgnoreCase(testName)) {
+                result.put("pythonCode", getCellValue(row.getCell(pythonCodeCol)));
+                result.put("output", getCellValue(row.getCell(outputCol)));
+                return result;
+            }
+        }
+
+        System.out.println("TestName not found.");
+        return result;
+    }
+
+    private String getCellValue(Cell cell) {
+        if (cell == null) return "";
+        switch (cell.getCellType()) {
+            case STRING: return cell.getStringCellValue();
+            case NUMERIC: return String.valueOf(cell.getNumericCellValue());
+            case BOOLEAN: return String.valueOf(cell.getBooleanCellValue());
+            case FORMULA: return cell.getCellFormula();
+            default: return "";
+        }
+    }
+
+    public void close() {
+        try {
+            if (workbook != null) workbook.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+	
 }

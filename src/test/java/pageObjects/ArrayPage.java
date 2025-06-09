@@ -121,14 +121,14 @@ public class ArrayPage {
 	
 
 	
-	public void enterCodePractice(String sheetname, int rownumber) throws InvalidFormatException, IOException, InterruptedException {
-		String code = utils.getCodefromXls(sheetname, rownumber);
+	public void enterCodePractice(String sheetname, String testname) throws InvalidFormatException, IOException, InterruptedException {
+		String code = utils.getCodefromXls(sheetname, testname);
 		utils.enterCodePractice(code, question_CodeInput, driver);
 	}
 	
-	public String getQuestionOutput(String sheetname, int rownumber) throws InvalidFormatException, IOException  {
+	public String getQuestionOutput(String sheetname, String testname) throws InvalidFormatException, IOException  {
 		Utils utils = new Utils();
-		String result = utils.getOutputFromXls(sheetname, rownumber);
+		String result = utils.getOutputFromXls(sheetname, testname);
 		return result;
 	}
 		

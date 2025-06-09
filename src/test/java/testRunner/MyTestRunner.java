@@ -7,13 +7,17 @@ import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-		features = {"src/test/resources/Features/"},
+		features = {"src/test/resources/Features/linkedlist.feature"},
 		glue = {"stepDefinitions", "hooks"},
+		
 		plugin = {"pretty","html:target/cucumber.html","io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
-		         "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
+		         "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
+		         
 		        }
 		)
 
+
 public class MyTestRunner {
+	
 
 }

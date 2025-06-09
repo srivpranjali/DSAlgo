@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,15 +15,17 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import driverFactory.MyDriverFactory;
-import utilities.LoggerLoad;
+
 
 public class Utils {
 	
 	WebDriver driver = MyDriverFactory.getDriver();
-	private XlsReader reader = new XlsReader();
+	
 	private ConfigReader configObj = new ConfigReader();
-	String xlsPath = configObj.getProperty("xlsFilePath");
-		
+	String xlsfile = configObj.getProperty("xlsFilePath");
+	
+	private XlsReader reader = new XlsReader(xlsfile);
+			
 	
 	public void waitForElementVisible(WebElement element) {
 		new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(element));
@@ -38,15 +41,15 @@ public class Utils {
 	}
 	
 	
-	public String getCodefromXls(String sheetname, int rownumber) throws InvalidFormatException, IOException {
-		List<Map<String, String>> testdata = reader.getData(xlsPath, sheetname);
-		String code = testdata.get(rownumber).get("pythonCode");
+	public String getCodefromXls(String sheetname, String testname) throws InvalidFormatException, IOException {
+		Map<String, String> testdata = reader.getPythonCodeAndOutput(sheetname, testname);
+		String code = testdata.get("pythonCode");
 		return code;
 	}
 	
-	public String getOutputFromXls(String sheetname, int rownumber) throws InvalidFormatException, IOException {
-		List<Map<String, String>> testdata = reader.getData(xlsPath, sheetname);
-		String result = testdata.get(rownumber).get("output");
+	public String getOutputFromXls(String sheetname, String testname) throws InvalidFormatException, IOException {
+		Map<String, String> testdata = reader.getPythonCodeAndOutput(sheetname, testname);
+		String result = testdata.get("output");
 		return result;
 	}
 	

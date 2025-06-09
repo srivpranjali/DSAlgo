@@ -9,7 +9,9 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import utilities.LoggerLoad;
 
 public class MyDriverFactory {
@@ -17,6 +19,7 @@ public class MyDriverFactory {
     //public static WebDriver driver;
 	public static ChromeOptions chrome = new ChromeOptions();
 	public static EdgeOptions edge = new EdgeOptions();
+	public static FirefoxOptions firefox = new FirefoxOptions();
 	
 	public static ThreadLocal<WebDriver>tldriver = new ThreadLocal<>();
 	
@@ -24,17 +27,23 @@ public class MyDriverFactory {
 		System.out.println("browser value is: " +browser);
 		
 		if(browser.equals("chrome")) {
-			LoggerLoad.info("Testing on Chrome -" +browser);
+			LoggerLoad.info("Testing on -" +browser);
+			WebDriverManager.chromedriver().setup();
 			chrome.setPageLoadStrategy(PageLoadStrategy.EAGER);
 			chrome.addArguments("--headless=new");
 			tldriver.set(new ChromeDriver(chrome));
 		}
 		else if (browser.equals("firefox")) {
-			LoggerLoad.info("Testing on Firefox -" +browser);
-			tldriver.set(new FirefoxDriver());
+			LoggerLoad.info("Testing on -" +browser);
+			WebDriverManager.firefoxdriver().driverVersion("0.36.0").setup();
+			firefox.setPageLoadStrategy(PageLoadStrategy.EAGER);
+			firefox.addArguments("--headless");
+			tldriver.set(new FirefoxDriver(firefox));
+			
 	    }
 		else if (browser.equals("edge")) {
-			LoggerLoad.info("Testing on Edge -" +browser);
+			LoggerLoad.info("Testing on -" +browser);
+			WebDriverManager.edgedriver().setup();
 			edge.setPageLoadStrategy(PageLoadStrategy.EAGER);
 			edge.addArguments("--headless=new");
 			tldriver.set(new EdgeDriver(edge));
