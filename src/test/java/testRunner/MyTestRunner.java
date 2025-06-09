@@ -11,10 +11,13 @@ import io.cucumber.junit.CucumberOptions;
 		glue = {"stepDefinitions", "hooks"},
 		
 		plugin = {"pretty","html:target/cucumber.html","io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
-		         "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
+		         "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
+		         
 		        }
 		)
 
+
 public class MyTestRunner {
+	
 
 }
