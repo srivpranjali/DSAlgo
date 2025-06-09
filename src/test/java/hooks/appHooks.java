@@ -25,9 +25,6 @@ public class appHooks {
 		LoggerLoad.info("Execution Started");
 				
 		String browser = System.getProperty("browser");
-		System.setProperty("extent.reporter.spark.out", "ExtendReports/" + browser + "/Spark.html");
-	    System.setProperty("allure.results.directory", "allure-results/" + browser);
-		
 		MyDriverFactory.initializeBrowser(browser);
 
 		driver = MyDriverFactory.getDriver();
