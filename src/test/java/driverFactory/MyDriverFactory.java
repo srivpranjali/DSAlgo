@@ -29,14 +29,14 @@ public class MyDriverFactory {
 		if(browser.equals("chrome")) {
 			LoggerLoad.info("Testing on -" +browser);
 			WebDriverManager.chromedriver().setup();
-			chrome.setPageLoadStrategy(PageLoadStrategy.EAGER);
+			//chrome.setPageLoadStrategy(PageLoadStrategy.EAGER);
 			chrome.addArguments("--headless=new");
 			tldriver.set(new ChromeDriver(chrome));
 		}
 		else if (browser.equals("firefox")) {
 			LoggerLoad.info("Testing on -" +browser);
 			WebDriverManager.firefoxdriver().driverVersion("0.36.0").setup();
-			firefox.setPageLoadStrategy(PageLoadStrategy.EAGER);
+			//firefox.setPageLoadStrategy(PageLoadStrategy.EAGER);
 			firefox.addArguments("--headless");
 			tldriver.set(new FirefoxDriver(firefox));
 			

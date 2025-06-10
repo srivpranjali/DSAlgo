@@ -5,21 +5,17 @@ import java.io.IOException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 
 import driverFactory.MyDriverFactory;
-import utilities.ConfigReader;
 import utilities.Utils;
 
 public class ArrayPage {
 	
 	private WebDriver driver;
-	private ConfigReader reader = new ConfigReader();
 	private Utils utils = new Utils();
-
 	
 	// Locators
 
@@ -48,10 +44,12 @@ public class ArrayPage {
 		PageFactory.initElements(driver,this);
 	}
 	
-	
-
-	public void get_userOnArrayPage() {
-		driver.get(reader.getProperty("Arrays_URL"));
+    public void get_userOnPracticeArrayPage() {
+		
+		getStarted_Arrays.click();
+		arrays_in_python.click();
+		practice_Questions.click();
+		
 	}
 	
 	public void click_getStarted_Arrays() {
@@ -118,9 +116,7 @@ public class ArrayPage {
 		utils.waitForElementVisible(question_Output);
 		return question_Output.getText();
 	}
-	
-
-	
+		
 	public void enterCodePractice(String sheetname, String testname) throws InvalidFormatException, IOException, InterruptedException {
 		String code = utils.getCodefromXls(sheetname, testname);
 		utils.enterCodePractice(code, question_CodeInput, driver);

@@ -1,12 +1,8 @@
 package pageObjects;
 
 import java.io.IOException;
-import java.time.Duration;
-
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -14,14 +10,11 @@ import org.openqa.selenium.support.PageFactory;
 
 
 import driverFactory.MyDriverFactory;
-import utilities.ConfigReader;
-import utilities.LoggerLoad;
 import utilities.Utils;
 
 public class CommonPage {
 	
 	private WebDriver driver;
-	private ConfigReader reader = new ConfigReader();
 	private Utils utils = new Utils();
 	
 	

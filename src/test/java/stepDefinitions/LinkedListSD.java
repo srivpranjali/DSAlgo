@@ -29,7 +29,7 @@ public class LinkedListSD {
 
 	@Given("User is on the Linked List page")
 	public void user_is_on_the_linked_list_page() {
-		llPage.get_userOnLLPage();
+		llPage.click_getStarted_LinkedList();
 		LoggerLoad.info("User is on Linked List Page");
 	    
 	}

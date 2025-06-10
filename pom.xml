@@ -182,11 +182,12 @@
   <version>3.0.0-M5</version>
   <configuration>
     <includes>
-      <include>**/*IT.java</include>
+      <include>**/**IT.java</include>
       
     </includes>
     <parallel>classes</parallel>
     <threadCount>6</threadCount>
+    <perCoreThreadCount>true</perCoreThreadCount>
     <forkCount>6</forkCount>
     <reuseForks>false</reuseForks>
   </configuration>

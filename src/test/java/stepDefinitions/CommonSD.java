@@ -51,7 +51,7 @@ public class CommonSD {
 	@Given("User is logged in to Home Page")
 	public void user_is_logged_in_to_home_page() {
 		driver.get(ConfigReader.getProperty("appHome_URL"));
-		LoggerLoad.info("User is redirected to Home Page of DSAlgo portal");
+		LoggerLoad.info("User successfully logs in to Home Page of DSAlgo portal");
 
 	}
 
@@ -145,33 +145,6 @@ public class CommonSD {
 	 
 	}
 
-	@Given("User is on the particular page {string}")
-	public void user_is_on_the_particular_page(String options) {
-		if ((options.equals("Arrays in Python")) ||
-	    		(options.equals("Arrays Using List")) ||
-	    		(options.equals("Basic Operations in Lists")) ||
-	    		(options.equals("Applications of Array"))) {
-	    	
-			arrayPage.click_getStarted_Arrays();
-	    	arrayPage.click_ArrayOptions(options);
-	    	LoggerLoad.info("User is on the Page - " + options);
-	    }
-	    
-	    else if ((options.equals("Introduction")) ||
-	    		(options.equals("Creating Linked LIst")) ||
-	    		(options.equals("Types of Linked List")) ||
-	    		(options.equals("Implement Linked List in Python")) ||
-	    		(options.equals("Traversal")) ||
-	    		(options.equals("Insertion")) ||
-	    		(options.equals("Deletion"))) {
-	    	
-	    	llPage.click_getStarted_LinkedList();
-	    	llPage.click_LinkedListOptions(options);
-	    	LoggerLoad.info("User is on the Page - " + options);
-	    }
-	    
-	}
-
 	@When("User clicks on Try Here button of page {string}")
 	public void user_clicks_on_try_here_button_of_page(String try_page) {
 		if ((try_page.equals("Arrays in Python")) ||
@@ -197,43 +170,13 @@ public class CommonSD {
 	    
 	}
 	
-	@Given("User is on the tryEditor page of {string} with Run button")
-	public void user_is_on_the_try_editor_page_with_run_button(String option) {
-		if ((option.equals("Arrays in Python")) ||
-	    		(option.equals("Arrays Using List")) ||
-	    		(option.equals("Basic Operations in Lists")) ||
-	    		(option.equals("Applications of Array"))) {
-	    	
-			arrayPage.click_getStarted_Arrays();
-		    arrayPage.click_ArrayOptions(option);
-		    arrayPage.click_TryHere();
-	    }
-	    
-	    else if ((option.equals("Introduction")) ||
-	    		(option.equals("Creating Linked LIst")) ||
-	    		(option.equals("Types of Linked List")) ||
-	    		(option.equals("Implement Linked List in Python")) ||
-	    		(option.equals("Traversal")) ||
-	    		(option.equals("Insertion")) ||
-	    		(option.equals("Deletion"))) {
-	    	
-	    	llPage.click_getStarted_LinkedList();
-	    	llPage.click_LinkedListOptions(option);
-	    	llPage.click_TryHere();
-	    }
-	    
-	    
-	}
-
 	@Then("User should be redirected to TryEditor page having Run button")
 	public void user_should_be_redirected_to_try_editor_page_having_run_button() {
 		LoggerLoad.info("User directed to TryEditor Page");
 		assertTrue(commonPage.tryEditorRunBtn(), "Run Button is not displayed on TryEditor Page");
 		LoggerLoad.info("User is on TryEditor Page with Run Button displayed");
-		
 	    
 	}
-
 
 	@When("User writes the valid code in editor from {string} and {string} and click Run button")
 	public void user_writes_the_valid_code_in_editor_from_and_and_click_run_button(String sheetname, String testname) throws InvalidFormatException, IOException {

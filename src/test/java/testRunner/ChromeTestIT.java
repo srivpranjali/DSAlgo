@@ -25,4 +25,5 @@ public class ChromeTestIT {
     public static void setBrowser() {
         System.setProperty("browser", "chrome");
     }
+
 }
