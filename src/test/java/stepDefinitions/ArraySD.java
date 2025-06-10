@@ -12,12 +12,10 @@ import org.openqa.selenium.WebDriver;
 
 import driverFactory.MyDriverFactory;
 import pageObjects.ArrayPage;
-import utilities.ConfigReader;
 import utilities.LoggerLoad;
 
 public class ArraySD {
 	
-	private ConfigReader reader = new ConfigReader();
 	private WebDriver driver = MyDriverFactory.getDriver();
 	private ArrayPage arrayPage = new ArrayPage(driver);
 
@@ -29,21 +27,14 @@ public class ArraySD {
 	}
 	@Given("User is on the Array page")
 	public void user_is_on_the_array_page() {
-	    arrayPage.get_userOnArrayPage();
-	    LoggerLoad.info("User is on Array Page");
+	    arrayPage.click_getStarted_Arrays();
+		LoggerLoad.info("User is on Array Page");
 	    
 	}
 
-	@When("User clicks Array Practice Questions link")
-	public void user_clicks_array_practice_questions_link() {
-	   arrayPage.click_PracticeQuestions();
-	   LoggerLoad.info("User clicks Array Practice Questions link");
-	}
-
-
 	@Given("User is on Array Practice Questions page")
 	public void user_is_on_array_practice_questions_page() {
-		MyDriverFactory.getDriver().get(reader.getProperty("Array_Practice_Questions_URL"));
+		arrayPage.get_userOnPracticeArrayPage();
 		LoggerLoad.info("User is on Array Practice Questions page");
 	      
 	}
@@ -52,20 +43,6 @@ public class ArraySD {
 	public void user_clicks_link_from_the_list(String questions) {
 	    arrayPage.click_PracticeQuestionsOptions(questions);
 	    LoggerLoad.info("User clicks Practice Question link" +questions);
-	}
-
-	@Then("User should be redirected to {string} page having a question, tryEditor with Run and Submit buttons")
-	public void user_should_be_redirected_to_page_having_a_question_try_editor_with_run_and_submit_buttons(String destinationUrl) {
-		assertEquals(driver.getCurrentUrl(), destinationUrl);
-		LoggerLoad.info("User is on TryEditor Page of Practice Question link");
-	}
-
-	@Given("User is on the {string} practice editor page")
-	public void user_is_on_the_practice_editor_page(String question) {
-		driver.get(reader.getProperty("Array_Practice_Questions_URL"));
-	    arrayPage.click_PracticeQuestionsOptions(question);
-				
-		LoggerLoad.info("User is on TryEditor Page of Practice Question link");
 	}
 
 	@When("User writes the valid code in practice editor from {string} and {string} and click Run button")
@@ -93,6 +70,17 @@ public class ArraySD {
 	public void user_should_be_able_to_see_correct_output_on_submission() {
 		assertEquals(arrayPage.getResult(), arrayPage.getQuestionOutput(),"The output is incorrect.");
 		LoggerLoad.info("TryEditor block is successfully submitted with correct output");
+	}
+	
+	@When("User clicks link {string}")
+	public void user_clicks_link(String practiceQues) {
+		arrayPage.click_PracticeQuestionsOptions(practiceQues);
+	}
+	
+	
+	@Then("User should be redirected to question page")
+	public void user_should_be_redirected_to_question_page() {
+		assertEquals(arrayPage.practiceQuestionsTitle(),"Assessment");
 	}
 
 

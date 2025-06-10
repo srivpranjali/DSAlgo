@@ -25,7 +25,6 @@ public class LoginPage {
 	private Utils utils = new Utils();
 	
 	
-	
 	@FindBy (xpath = "//input[@id = 'id_username']") WebElement Username;
 	@FindBy (xpath = "//input[@id = 'id_password']") WebElement Password;
 	@FindBy (xpath = "//input[@value = 'Login']") WebElement Login;

@@ -24,7 +24,7 @@ public class appHooks {
 	public void setup(Scenario scenario) throws Throwable {
 		LoggerLoad.info("Execution Started");
 				
-		String browser = System.getProperty("browser");
+		String browser = System.getProperty("browser","chrome");
 		MyDriverFactory.initializeBrowser(browser);
 
 		driver = MyDriverFactory.getDriver();
